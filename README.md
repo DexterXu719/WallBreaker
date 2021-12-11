@@ -1,6 +1,6 @@
 <div>
   <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="darren_dexter logo.png" alt="Logo" width="80" height="80">
+    <img src="darren_dexter logo.png" alt="Logo" width="460" height="231">
   </a>
 </div>
 
