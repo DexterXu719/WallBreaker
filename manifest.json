@@ -1,8 +1,9 @@
 {
 	"manifest_version": 2,
-	"version" : "1.0",
-	"name" : "Demo App Deploying!",
-	"description" : "This is our first chrome extension",
+	"version" : "1.2",
+	"name" : "Wall Breaker",
+	"description" : "Wall Breaker relieves the frustration of web browsing!!!",
+	"content_security_policy": "script-src 'self' https://ajax.googleapis.com; object-src 'self'",
 	"content_scripts" : [
 		{
 			"matches" : [
@@ -11,18 +12,20 @@
 			"js": ["content.js"]
 		}
 	],
-	"icons": {
-		"16": "icon.png",
-		"48": "icon.png",
-		"128": "icon.png"
-	
-	},
-	"browser_action" : {
-		"default_icon" : "icon.png"
-	},
-	"background" : {
-		"scripts": ["background.js"]
-	}
-	
-	
+	"icons" : {
+		"16": "icon1.png",
+		"48": "icon1.png",
+		"128": "icon1.png"
+		},
+		"browser_action" : {	
+			"default_icon" : "icon1.png",
+			"default_popup":"popup.html"
+		},
+		"background" : {
+			"scripts" : ["background.js"]
+		},
+		"permissions" : [
+			"<all_urls>",
+			"storage"
+			]
 }

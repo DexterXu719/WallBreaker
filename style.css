@@ -1,0 +1,80 @@
+body{
+  color: rgb(27, 38, 44);
+  background-color: rgb(187, 225, 250);
+  text-align: center;
+}
+
+h1.entry-title{
+  margin:0;
+}
+
+h1{
+  padding-bottom: 0 !important;
+}
+
+img{
+  padding-bottom: 0 !important;
+}
+
+p{
+  color:crimson;
+}
+#tempID{
+  background-color:aqua;
+}
+.switch{
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input{
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.slider{
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color:rgb(98,166,212);
+  -webkit-transition:.4s;
+  transition: .4s;  
+}
+
+.slider:before{
+  position: absolute;
+  content:"";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition:.4s;
+  transition: .4s;  
+}
+
+input:checked+.slider{
+  background-color:rgb(15, 76, 117);
+}
+input:focus+.slider{
+  box-shadow: 0 0 1px blue;
+}
+input:focus+.slider{
+  box-shadow: 0 0 1px blue;
+}
+input:checked+.slider:before{
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+.slider.round{
+  border-radius: 34px;
+}
+.slider.round:before{
+  border-radius: 50%;
+}
