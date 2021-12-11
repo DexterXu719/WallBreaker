@@ -1,6 +1,14 @@
+<div align="center">
+  <a href="https://github.com/othneildrew/Best-README-Template">
+    <img src="icon1.png" alt="Logo" width="80" height="80">
+  </a>
+</div>
+
+
+
+
+
 # WallBreaker
-
-
 
 Bypass Paywalls
 ## About WallBreaker
