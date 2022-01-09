@@ -1,31 +1,27 @@
-console.log("My Chrome Extension works! Huzzah!!");
+console.log("Content Script running on page start up")
 
+var makeIncognito = false;
 
-chrome.runtime.onMessage.addListener(gotMessage);
+chrome.storage.local.get(["slider1"], function(result){
+	makeIncognito = result.slider1;
+	console.log("Checked to see if Incognito is desired: " + makeIncognito);
+});
 
-var num = 0
-function gotMessage(message, sender, sendResponse) {
-	console.log(message.txt);
-	console.log(num % 2 == 0);
-	if (num % 2 == 0){
-		console.log("if");
-		let paragraphs = document.getElementsByTagName("p");
-		for (element of paragraphs){
-			element.style['background-color'] = '#7EC8EC'
+if(makeIncognito){
+	window.onload = checkForPayWall();
+}
+
+function checkForPayWall(){
+	var paywallId = "paywall";	
+		var content	 = document.getElementById(paywallId);
+			if(content != null){
+					chrome.runtime.sendMessage({
+					incognito: true,
+					url: window.locationhref
+				},
+				function(response){
+					console.log("Opening page in incognito mode!",response);
+				}	
+			);
 		}
-	}
-	else{
-		console.log("else");
-		let paragraphs = document.getElementsByTagName("p");
-		for (element of paragraphs){
-			element.style['background-color'] = '#FF0000'
-		}
-	}
-	
-	num = num + 1;
-	let msg = {
-		text: "Message recieved, background. Report back from the content script!!"
-	}
-	
-	chrome.runtime.sendMessage(msg);
 }
