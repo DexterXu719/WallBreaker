@@ -1,14 +1,16 @@
 console.log("Background is worked!");
 
-// window.chrome.runtime.onMessage.addListener(paywallFound);
+// barrier
 
-// function paywallFound(request,sender,sendResponse){
-//  	if(request.incognito == true){
-//  		openIcognito = chrome.windows.create({"url": request.url, "incognito": request.incognito});
-//  		sendResponse({msg: "Enjoy the article"});
-//  	}
-// }
-/*function redirect(details){
+window.chrome.runtime.onMessage.addListener(paywallFound);
+
+	function paywallFound(request,sender,sendResponse){
+  	if(request.incognito == true){
+ 		openIcognito = chrome.windows.create({"url": request.url, "incognito": request.incognito});
+  		sendResponse({msg: "Enjoy the article"});
+  	}
+ }
+function redirect(details){
 	details.requestHeaders = details.requestHeaders.filter(function(header)){
 	console.log(header.name);
 		if(header.name === "Referer"){
@@ -33,8 +35,8 @@ chrome.webRequest.onBeforeSendHeaders.addListener(redirect,{
 	types: ["main_frame"], ],
 	["requestHeaders", "blocking", "extraHeaders"]
 );
-*/
-/*function googlePretend(details){
+
+function googlePretend(details){
 	var google_adbot_UA = "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Googlebot/2.1; +http://www.google.com/bot.html) Chrome/W.X.Y.Z‡ Safari/537.36";
 
 	details.request Headers = details.requestHeaders.filter(function(header){
@@ -63,9 +65,9 @@ chrome.webRequest.onBeforeSendHeaders.addListener(googlePretend, {
 	urls: ["<all_urls>"],
 	types: ["main_frame"], },
 	["requestHeaders", "blocking", "extraHeaders"]	
-); */
+); 
 
-
+// barrier
 
 console.log("Background Script running on Extension start up");
 
