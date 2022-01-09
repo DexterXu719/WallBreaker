@@ -2,70 +2,70 @@ console.log("Background is worked!");
 
 // barrier
 
-window.chrome.runtime.onMessage.addListener(paywallFound);
+// window.chrome.runtime.onMessage.addListener(paywallFound);
 
-	function paywallFound(request,sender,sendResponse){
-  	if(request.incognito == true){
- 		openIcognito = chrome.windows.create({"url": request.url, "incognito": request.incognito});
-  		sendResponse({msg: "Enjoy the article"});
-  	}
- }
-function redirect(details){
-	details.requestHeaders == details.requestHeaders.filter(function(header)){
-	console.log(header.name);
-		if(header.name === "Referer"){
-			return false;
-		}
-		else{
-			return true;
-		}
-	}
+// 	function paywallFound(request,sender,sendResponse){
+//   	if(request.incognito == true){
+//  		openIcognito = chrome.windows.create({"url": request.url, "incognito": request.incognito});
+//   		sendResponse({msg: "Enjoy the article"});
+//   	}
+//  }
+// function redirect(details){
+// 	details.requestHeaders = details.requestHeaders.filter(function(header)){
+// 	console.log(header.name);
+// 		if(header.name === "Referer"){
+// 			return false;
+// 		}
+// 		else{
+// 			return true;
+// 		}
+// 	}
 	
-	details.requestHeaders.push({
-		"name" : "Referer",
-		"value" : "https://t.co"
-	})
+// 	details.requestHeaders.push({
+// 		"name" : "Referer",
+// 		"value" : "https://t.co"
+// 	})
 	
-	console.log("Successfully changed out header value to Twitter");
-	return{requestHeader: details.requestHeaders};
-}
+// 	console.log("Successfully changed out header value to Twitter");
+// 	return{requestHeader: details.requestHeaders};
+// }
 
-chrome.webRequest.onBeforeSendHeaders.addListener(redirect,{
-	urls: ["<all_urls>"]
-	types: ["main_frame"], ],
-	["requestHeaders", "blocking", "extraHeaders"]
-);
+// chrome.webRequest.onBeforeSendHeaders.addListener(redirect,{
+// 	urls: ["<all_urls>"]
+// 	types: ["main_frame"], ],
+// 	["requestHeaders", "blocking", "extraHeaders"]
+// );
 
-function googlePretend(details){
-	var google_adbot_UA = "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Googlebot/2.1; +http://www.google.com/bot.html) Chrome/W.X.Y.Z‡ Safari/537.36";
+// function googlePretend(details){
+// 	var google_adbot_UA = "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Googlebot/2.1; +http://www.google.com/bot.html) Chrome/W.X.Y.Z‡ Safari/537.36";
 
-	details.request Headers = details.requestHeaders.filter(function(header){
-		if (header.name === "User-Agent" || header.name === "X-Forwarded-For"){
-			return false;
-		} 
-		return true;
-	});
+// 	details.request Headers = details.requestHeaders.filter(function(header){
+// 		if (header.name === "User-Agent" || header.name === "X-Forwarded-For"){
+// 			return false;
+// 		} 
+// 		return true;
+// 	});
 	
-	details.requestHeaders.push({
-		"name": "User-Agent",
-		"value": google_adbot_UA
-	});
-	details.requestHeaders.push({
-		"name": "X-Forwarded-For",
-		"value": "66.249.66.1"
-	});
+// 	details.requestHeaders.push({
+// 		"name": "User-Agent",
+// 		"value": google_adbot_UA
+// 	});
+// 	details.requestHeaders.push({
+// 		"name": "X-Forwarded-For",
+// 		"value": "66.249.66.1"
+// 	});
 		
-	console.log("Modified ourself to be a robot");
+// 	console.log("Modified ourself to be a robot");
 		
-	return{requestHeaders: details.requestHeaders};
+// 	return{requestHeaders: details.requestHeaders};
 		
-	}
+// 	}
 		
-chrome.webRequest.onBeforeSendHeaders.addListener(googlePretend, {
-	urls: ["<all_urls>"],
-	types: ["main_frame"], },
-	["requestHeaders", "blocking", "extraHeaders"]	
-); 
+// chrome.webRequest.onBeforeSendHeaders.addListener(googlePretend, {
+// 	urls: ["<all_urls>"],
+// 	types: ["main_frame"], },
+// 	["requestHeaders", "blocking", "extraHeaders"]	
+// ); 
 
 // barrier
 
