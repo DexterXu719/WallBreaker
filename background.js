@@ -11,7 +11,7 @@ window.chrome.runtime.onMessage.addListener(paywallFound);
   	}
  }
 function redirect(details){
-	details.requestHeaders = details.requestHeaders.filter(function(header)){
+	details.requestHeaders == details.requestHeaders.filter(function(header)){
 	console.log(header.name);
 		if(header.name === "Referer"){
 			return false;
